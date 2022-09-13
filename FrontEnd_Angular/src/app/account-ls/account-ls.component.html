@@ -1,0 +1,42 @@
+<h2>List Of Accounts</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="userTable">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th width="25%" scope="col">Account_id</th>
+                            <th width="25%" scope="col">Branch_Name</th>
+                            <th width="25%" scope="col">Account_type</th>
+                            <th width="25%" scope="col">Account_balance</th>
+                            <th width="10%" scope="col"></th>
+                            <!-- <th width="10%" scope="col"></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let account of accountData">
+                            <td>{{account.account_id}}</td>
+                            <td>{{account.branch_Name}}</td>
+                            <td>{{account.account_type}}</td>
+                            <td>{{account.account_balance}}</td>
+                            <td><button type="button" class="btn btn-info"
+                                    (click)="goToEditAccountDetails(account.account_id)">Edit</button></td>
+                            <td><button type="button" class="btn btn-danger"
+                                    (click)="goToDeleteAccountDetails(account.account_id)">Delete</button></td>
+                            <!-- <td><button type="button" class="btn btn-danger" (click)="goToDeleteUser(user.user_ID)">Delete</button></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- name!: string;
+        email_ID!: string;
+        mobile_number!: number;
+        secondary_Mobile!: number;
+        dOB!: Date;
+        gender!: string; -->

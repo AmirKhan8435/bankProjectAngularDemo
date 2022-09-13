@@ -1,0 +1,117 @@
+<div class="Form">
+    <section >
+      <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+              <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                  <h2 class="text-uppercase text-center mb-5">Account Details</h2>
+                  <form #addAccountForm="ngForm" (ngSubmit)="addAccountFormSubmit(addAccountForm)">
+                    <div class="form-outline mb-1">
+                      <label class="form-label" for="form3Example1cg" ></label>
+                      <input #name1="ngModel" type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder=" Enter Branch Name" required [(ngModel)]="account.branch_Name" name="branch_Name" required ngModel
+                        pattern="[a-z A-Z 0-9]{2,30}" minlength="2" maxlength="30"/>
+                      <div *ngIf="name1.touched && name1.invalid" class="alert alert-danger">
+                        <div *ngIf="name1.errors?.['required']">Branch Name required</div>
+                        <div *ngIf="name1.errors?.['pattern']">Special charachter are not allowed</div>
+                        <div *ngIf="name1.errors?.['maxlength']">Name should be less than 30 characters</div>
+                        <div *ngIf="name1.errors?.['minlength']">Name should be greater than 2 characters</div>
+                      </div>
+                    </div>
+    
+                    <!-- <div class="form-outline mb-1">
+                      <input type="email" id="form3Example3cg" class="form-control form-control-lg" placeholder="Account Type"  required [(ngModel)]="account.account_type" name="account_type"/>
+                      <label class="form-label" for="form3Example3cg"></label>
+                    </div> -->
+                    
+                    <h6 class="mb-2 pb-1">Account Type: </h6>
+                      <div class="form-check form-check-inline">
+
+                        <input #name2="ngModel" class="form-check-input" type="radio" name="account_type" id="SavingType" 
+                        [(ngModel)]="account.account_type" ngModel checked/>
+                        <label class="form-check-label" for="account_type">Saving Type</label><br>
+
+                        <input #name2="ngModel" class="form-check-input" type="radio" name="account_type" id="CurrentType"
+                          [(ngModel)]="account.account_type" value="C" ngModel />
+                        <label class="form-label" for="account_type">Current Type</label><br>
+
+                        <div *ngIf="name2.touched && name2.invalid" class="alert alert-danger">
+                          <div *ngIf="name2.errors?.['required']">Account Type required</div>
+                        </div>
+                      </div>
+                      <br><br>
+
+                    <div class="form-outline mb-1">
+                        <input #name3="ngModel" type="number" id="one" class="form-control form-control-lg" min="2000" placeholder="Account Balance"  required [(ngModel)]="account.account_balance" name="account_balance" ngModel />
+                        <label class="form-label" for="form3Example3cg"></label>
+                        <div *ngIf="name3.touched && name3.invalid" class="alert alert-danger">
+                          <div *ngIf="name3.errors?.['required']">Account Type required</div>
+                          <div *ngIf="name3.errors?.['min']">Minimum Balance is 2000</div>
+                        </div>
+                      </div>
+    
+                      <div class="form-outline mb-1">
+                        <input type="text" id="ten" class="form-control form-control-lg"   required [(ngModel)]="account.user_ID" name="user_ID" disabled/>
+                        <label class="form-label" for="form3Example3cg"></label>
+                      </div>
+    
+                
+                      <!-- <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+    
+                        <h6 class="mb-0 me-4">Gender : </h6>
+      
+                        <div class="form-check form-check-inline mb-0 me-4">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                            value="option1" required[(ngModel)]="user.Gender" />
+                          <label class="form-check-label" for="femaleGender" >Male</label>
+                        </div>
+      
+                        <div class="form-check form-check-inline mb-0 me-4">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                            value="option2" required[(ngModel)]="user.Gender" />
+                          <label class="form-check-label" for="maleGender">Female</label>
+                        </div>
+      
+                        <div class="form-check form-check-inline mb-0">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                            value="option3" required[(ngModel)]="user.Gender"/>
+                          <label class="form-check-label" for="otherGender">Other</label>
+                        </div>
+      
+                      </div> -->
+      
+    
+                    <!-- <div class="form-outline mb-1">
+                      <input type="password" id="form3Example4cg" class="form-control form-control-lg" placeholder="Password"/>
+                      <label class="form-label" for="form3Example4cg"></label>
+                    </div>
+    
+                    <div class="form-outline mb-1">
+                      <input type="password" id="form3Example4cdg" class="form-control form-control-lg" placeholder="Repeat your password"/>
+                      <label class="form-label" for="form3Example4cdg"></label>
+                    </div> -->
+    
+                    <div class="form-check d-flex justify-content-center mb-5">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" name="active" ngModel required/>
+                      <label class="form-check-label" for="form2Example3g" >
+                        I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                      </label>
+                    </div>
+    
+                    <div class="d-flex justify-content-center">
+                      <button type="submit" [disabled]="addAccountForm.invalid || addAccountForm.untouched"
+                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Create</button>
+                    </div>
+    
+                    
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+

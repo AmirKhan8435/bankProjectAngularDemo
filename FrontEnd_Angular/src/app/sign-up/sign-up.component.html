@@ -1,0 +1,139 @@
+<body>
+  <div class="form-group">
+    <section class="vh-200 bg-image"
+      style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+      <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-200">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+              <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                  <h2 class="text-uppercase text-center mb-5">Add New User</h2>
+
+                  <form #addUserForm="ngForm" (ngSubmit)="addUserFormSubmit(addUserForm)">
+
+                    <div class="form-outline mb-4">
+                      <input #name1="ngModel" type="text" id="form3Example1cgz" class="form-control form-control-lg"
+                        placeholder="Enter Full Name" required [(ngModel)]="user.name" name="name"
+                        pattern="[a-z A-Z]{1,30}" minlength="5" maxlength="30" ngModel />
+                      <label class="form-label" for="form3Example1cg"></label>
+                      <div *ngIf="name1.touched && name1.invalid" class="alert alert-danger">
+                        <div *ngIf="name1.errors?.['required']">Name required</div>
+                        <div *ngIf="name1.errors?.['pattern']">Name should not contain numbers</div>
+                        <div *ngIf="name1.errors?.['maxlength']">Name should be less than 30 characters</div>
+                        <div *ngIf="name1.errors?.['minlength']">Name should be greater than 5 characters</div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input #name2="ngModel" email type="email" name="email_ID" id="form3Example3cg"
+                        class="form-control form-control-lg" placeholder="Enter a valid email address" required
+                        [(ngModel)]="user.email_ID" 
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ngModel />
+                      <label class="form-label" for="form3Example3cg"></label>
+                      <div *ngIf="name2.touched && name2.invalid" class="alert alert-danger">
+                        <div *ngIf="name2.errors?.['required']">*Email Field is Mandatory</div>
+                        <div *ngIf="name2.errors?.['email']">*Invalid Email</div>
+                        <div *ngIf="name2.errors?.['pattern']">*Please Enter Valid Email</div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input #name3="ngModel" type="password" id="form3Example1cg" class="form-control form-control-lg"
+                        placeholder="Password" required [(ngModel)]="user.password" name="password" minlength="6"
+                        maxlength="15" ngModel />
+                      <label class="form-label" for="form3Example1cg"></label>
+                      <div *ngIf="name3.touched && name3.invalid" class="alert alert-danger">
+                        <div *ngIf="name3.errors?.['required']">*Password Field is mandatory</div>
+                        <div *ngIf="name3.errors?.['minlength']">*Too short ,must contain least 6 characters</div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input #name4="ngModel" minlength="10" maxlength="10" required type="text" id="one"
+                        class="form-control form-control-lg" placeholder="Mobile Number" required
+                        [(ngModel)]="user.mobile_number" name="mobile_number" ngModel />
+                      <label class="form-label" for="form3Example3cg"></label>
+                      <div *ngIf="name4.touched && name4.invalid" class="alert alert-danger">
+                        <div *ngIf="name4.errors?.['required']">Mobile number required </div>
+                        <div *ngIf="name4.errors?.['minlength'] || name4.errors?.['maxlength']">Mobile number should be
+                          of 10 characters</div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input #name5="ngModel" minlength="10" maxlength="10" type="text" id="two"
+                        class="form-control form-control-lg" placeholder="Secondary Mobile Number" required
+                        [(ngModel)]="user.secondary_Mobile" name="secondary_Mobile" ngModel />
+                      <label class="form-label" for="form3Example3cg"></label>
+                      <div *ngIf="name5.touched && name5.invalid" class="alert alert-danger">
+                        <div *ngIf="name5.errors?.['required']">Mobile number required </div>
+                        <div *ngIf="name5.errors?.['minlength'] || name5.errors?.['maxlength']">Mobile number should
+                          be
+                          of 10 characters</div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <div class="form-control">
+                        <h6>Date of Birth : </h6>
+                        <input #name6="ngModel" type="date"  id="three" class="form-control form-control-lg"
+                          placeholder="DOB (DD-MM-YYYY)" required [(ngModel)]="user.dob" name="dob" ngModel />
+                        <label class="form-label" for="form3Example3cg"></label>
+                        <div *ngIf="name6.touched && name6.invalid" class="alert alert-danger">
+                          <div *ngIf="name6.errors?.['required']">DOB required</div>
+                          <!-- <div *ngIf="dateDiff" >Date is Invalid</div> -->
+                        </div>
+                        <div *ngIf="getDateDifference()" class="alert alert-danger">Date is Invalid</div>
+                      </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <h6 class="mb-2 pb-1">Gender: </h6>
+                      <div class="form-check form-check-inline">
+                        <div>
+                          <input #name7="ngModel" class="form-check-input" type="radio" name="Gender" id="maleGender" 
+                            [(ngModel)]="user.gender" checked ngModel />
+                          <label class="form-label" for="femaleGender">Male</label><br>
+                        </div>
+                        <div>
+                          <input #name3="ngModel" class="form-check-input" type="radio" name="Gender" id="femaleGender"
+                            [(ngModel)]="user.gender" value="F"  ngModel />
+                          <label class="form-check-label" for="maleGender">Female</label>
+                        </div>
+                        <div *ngIf="name3.touched && name3.invalid" class="alert alert-danger">
+                          <div *ngIf="name3.errors?.['required']">Gender required</div>
+                        </div>
+                      </div>
+
+                      <br><br>
+                      <div class="form-check form-check-inline">
+
+                        <input #name7="ngModel" class="form-check-input me-2" type="checkbox" value=""
+                          id="form2Example3c" name="active" required ngModel />
+                        <label class="form-check-label" for="form2Example3">
+                          I agree all statements in <a href="#!">Terms of service</a>
+                        </label>
+                      </div>
+
+                      <br><br>
+                      <div class="d-flex justify-content-center">
+                        <button type="submit" [disabled]="addUserForm.invalid || addUserForm.untouched"
+                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                      </div>
+                      <br>
+                      <div class="alert alert-info" role="alert">
+                        Have already an account? <a href="#!" class="alert-link" routerLink="/login"
+                          routerLinkActive="active">Login here</a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>

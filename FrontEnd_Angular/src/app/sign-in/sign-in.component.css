@@ -1,0 +1,12 @@
+.Form{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: aliceblue;
+}
+
+
+button
+{
+    padding-left: 2.5rem; 
+    padding-right: 2.5rem;
+}

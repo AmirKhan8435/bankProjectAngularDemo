@@ -1,0 +1,85 @@
+<div class="Form">
+  <section>
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Update Account Details</h2>
+
+                <form #updateAccountForm="ngForm" (ngSubmit)="editAccountFormSubmit()">
+
+                  <div class="form-outline mb-1">
+                    <label class="form-label" for="form3Example1cg">Branch Name</label>
+                    <input #name1="ngModel" type="text" id="form3Example1cg" class="form-control form-control-lg"
+                      placeholder="" required [(ngModel)]="account.branch_Name" name="branch_Name" ngModel
+                      pattern="[a-z A-Z 0-9]{2,30}" minlength="2" maxlength="30" />
+                    <div *ngIf="name1.touched && name1.invalid" class="alert alert-danger">
+                      <div *ngIf="name1.errors?.['required']">Branch Name required</div>
+                      <div *ngIf="name1.errors?.['pattern']">Special charachter are not allowed</div>
+                      <div *ngIf="name1.errors?.['maxlength']">Branch Name should be less than 30 characters</div>
+                      <div *ngIf="name1.errors?.['minlength']">Branch Name should be greater than 2 characters</div>
+                    </div>
+                  </div>
+
+                  <!-- <div class="form-outline mb-1">
+                      <input type="email" id="form3Example3cg" class="form-control form-control-lg" placeholder="Account Type"  required [(ngModel)]="account.account_type" name="account_type"/>
+                      <label class="form-label" for="form3Example3cg"></label>
+                    </div> -->
+
+                  <h6 class="mb-2 pb-1">Account Type: </h6>
+                  <div class="form-check form-check-inline">
+
+                    <input #name2="ngModel" class="form-check-input" type="radio" required
+                      [(ngModel)]="account.account_type" name="account_type" id="SavingType" value="S" ngModel />
+                    <label class="form-check-label" for="account_type">Saving Type</label><br>
+
+                    <input #name2="ngModel" class="form-check-input" type="radio" required
+                      [(ngModel)]="account.account_type" name="account_type" id="CurrentType" value="C" ngModel />
+                    <label class="form-label" for="account_type">Current Type</label><br>
+
+                    <div *ngIf="name2.touched && name2.invalid" class="alert alert-danger">
+                      <div *ngIf="name2.errors?.['required']">Account Type required</div>
+                    </div>
+                  </div>
+                  <br><br>
+
+                  <div class="form-outline mb-1">
+                    <label class="form-label" for="form3Example3cg">Enter Account Balance</label>
+                    <input #name3="ngModel" min="2000" type="number" id="one" class="form-control form-control-lg" placeholder="" required
+                      [(ngModel)]="account.account_balance" name="account_balance" />
+                    <div *ngIf="name3.touched && name3.invalid" class="alert alert-danger">
+                      <div *ngIf="name3.errors?.['required']">Account Type required</div>
+                      <div *ngIf="name3.errors?.['min']">Minimum Balance is 2000</div>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-1">
+                    <label class="form-label" for="form3Example3cg">Account User ID</label>
+                    <input type="text" id="ten" class="form-control form-control-lg" required [(ngModel)]="user.user_ID"
+                      name="user_ID" disabled />
+                  </div><br>
+
+                  <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" required ngModel name="active"/>
+                    <label class="form-check-label" for="form2Example3g">
+                      I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                    </label>
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" [disabled]="updateAccountForm.invalid" class="btn btn-primary">Update</button> &nbsp; &nbsp;
+
+                    <button class="B1" type="submit" class="btn btn-info" routerLink="/viewAccounts/:id"
+                      routerLinkActive="active">Back</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

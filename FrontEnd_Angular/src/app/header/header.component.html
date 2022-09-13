@@ -1,0 +1,36 @@
+<nav class="navbar navbar-light bg-primary">
+  <a class="nav-link" routerLink="/" href="#">
+    <img src="assets/bank.webp" width="80" height="80" alt="">
+  </a>
+  <label id="welcome" *ngIf="session.isLoggedIn()" >Welcome {{getCurrentName()}}</label>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item " >
+          <a class="nav-link active" aria-current="page" routerLink="/home" routerLinkActive="active" href="#">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="!session.isLoggedIn()">
+          <a class="nav-link" routerLink='/login' routerLinkActive="active"
+            href="/src/app/sign-in/sign-in.component.html">Sign In</a>
+        </li>
+        <li class="nav-item" *ngIf="!session.isLoggedIn()">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active" href="#">Sign Up</a>
+        </li>
+        <li class="nav-item" *ngIf="session.isLoggedIn()">
+          <a class="nav-link" routerLink="/getUsers" routerLinkActive="active" href="#">List Of User</a>
+        </li>
+        <!-- <li class="nav-item">
+              <a class="nav-link"  routerLink="/getUsers" routerLinkActive="active" href="#">Log out</a>
+            </li> -->
+        <li class="nav-item" >
+          <div id="logoutbtn"  *ngIf="session.isLoggedIn()" class="col-md-12 float-right">
+            <button type="button" class="btn btn-danger" (click)="logoutUser()">Log out</button>
+          </div >
+          <div id="loginbtn"  *ngIf="!session.isLoggedIn()" class="col-md-12 float-right">
+            <button type="button" class="btn btn-danger" routerLink='/login' routerLinkActive="active">Log in</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</nav>

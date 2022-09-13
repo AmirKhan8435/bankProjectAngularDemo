@@ -1,0 +1,82 @@
+<body>
+  <div class="Form">
+    <section>
+      <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100 ">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img src="assets/bank-1.jpg" class="img-fluid" alt="Sample image">
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <form #verifyUserForm="ngForm" (ngSubmit)="loginUserFormSubmit(verifyUserForm)">
+              <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                <!-- <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                  <i class="fab fa-facebook-f"></i> -->
+
+
+                <!-- <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+              </button>
+  
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-linkedin-in"></i>
+              </button>
+            </div> 
+            <div class="divider d-flex align-items-center my-4">
+              <p class="text-center fw-bold mx-3 mb-0">Or</p> -->
+              </div>
+
+              <div class="form-outline mb-4">
+                <input #name1="ngModel" required email type="email" name="email_ID" id="form3Example3"
+                  class="form-control form-control-lg" placeholder="Enter a valid email address"
+                  [(ngModel)]="user.email_ID" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
+                <label class="form-label" for="form3Example3">Email address</label>
+
+                <div *ngIf="name1.touched && name1.invalid" class="alert alert-danger">
+                  <!-- <div *ngIf ="name1.touched && name1.invalid" class="alert-email alert-danger-email"> -->
+                  <div *ngIf="name1.errors?.['required']">*Email Field is Mandatory</div>
+                  <div *ngIf="name1.errors?.['email']">*Invalid Email</div>
+                  <div *ngIf="name1.errors?.['pattern']">*Please Enter Valid Email</div>
+                </div>
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-3">
+                <input #name2="ngModel" name="password" type="password" id="form3Example4"
+                  class="form-control form-control-lg" placeholder="Enter password" required [(ngModel)]="user.password"
+                  minlength="6" ngModel />
+                <label class="form-label" for="form3Example4">Password</label>
+                <div *ngIf="name2.touched && name2.invalid" class="alert alert-danger">
+                  <div *ngIf="name2.errors?.['required']">*Password Field is mandatory</div>
+                  <div *ngIf="name2.errors?.['minlength']">*Too short ,must be at least 6 characters</div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- Checkbox -->
+                <div class="form-check mb-0">
+                  <input #name3="ngModel" class="form-check-input me-2" type="checkbox" name="active" id="form2Example3"
+                    required ngModel />
+                  <label class="form-check-label" for="form2Example3">
+                    Remember me
+                  </label>
+
+                </div>
+                <a href="#!" class="text-body">Forgot password?</a>
+              </div>
+
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button type="submit" class="btn btn-primary btn-lg"
+                  [disabled]="verifyUserForm.invalid || verifyUserForm.untouched">Login</button><br><br>
+                <!-- <button type="submit" class="btn btn-primary btn-lg" [disabled]="!verifyUserForm.form.valid " >Login</button><br><br> -->
+                <div class="alert alert-info" role="alert">
+                  Don't have an account? <a routerLink="/register" class="alert-link">Register here</a>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
